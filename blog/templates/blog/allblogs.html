@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head>
+    {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Album example for Bootstrap</title>
+    <title>Lei's Blog</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -23,28 +23,26 @@
 
     <header>
       
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div class="container">
-            <a class="navbar-brand" href="/">Lei Wu</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Twitter</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Resume</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="#">Blog</a>
-                </li>
-                
-              </ul>
-            </div>
-          
-          </nav>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="{% url 'home' %}">Lei Wu</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        
+                        <li class="nav-item">
+                        <a class="nav-link" href="{% static 'resume.pdf' %}">Resume</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'allblogs' %}">Blog</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            
+            </nav>
         
     </header>
 
@@ -59,11 +57,11 @@
 
         <div class="container">
             {% for blog in blogs.all %}
-            <a href=""><h3>{{ blog.title }}</h3></a>
+            <a href="{% url 'detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
             <!-- <br /> -->
             {{ blog.pub_date_pretty }}
             <br>
-            <img class="img-fluid" src="{{ blog.image.url }}" height=200 width=200>
+            <img class="img-fluid" src="{{ blog.image.url }}" height="200" width="200">
             <br>
             <p>{{ blog.summary }}</p>
             {% endfor %}

@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="en">
+  
   <head>
+      {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Album example for Bootstrap</title>
+    <title>Lei Wu</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -25,20 +26,18 @@
       
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <div class="container">
-            <a class="navbar-brand" href="#">Lei Wu</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Lei Wu</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav ml-auto">
+                
                 <li class="nav-item">
-                  <a class="nav-link" href="/twitter">Twitter</a>
+                  <a class="nav-link" href="{% static 'resume.pdf' %}">Resume</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/resume">Resume</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/blog">Blog</a>
+                  <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
                 </li>
                 
               </ul>
@@ -57,6 +56,7 @@
           <p>
             <a href="mailto:jobspecific@hotmail.com" class="btn btn-primary my-2">Email me</a>
           </p>
+          <img src="{% static 'lei.jpg' %}" height="300">
         </div>
       </section>
 
